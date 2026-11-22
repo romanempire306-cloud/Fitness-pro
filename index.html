@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101412">
+  <title>FITCORE — Gym Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#dashboard"><span class="brand-icon">FC</span><span>FIT<span>CORE</span><small>GYM MANAGEMENT</small></span></a>
+    <div class="side-label" data-i18n="workspace">WORKSPACE</div>
+    <nav class="side-nav">
+      <a class="nav-link active" href="#dashboard" data-page="dashboard"><b>▦</b><span data-i18n="dashboard">Dashboard</span></a>
+      <a class="nav-link" href="#members" data-page="members"><b>♙</b><span data-i18n="members">Members</span><i id="memberNavCount">0</i></a>
+      <a class="nav-link" href="#attendance" data-page="attendance"><b>✓</b><span data-i18n="attendance">Attendance</span></a>
+      <a class="nav-link" href="#workouts" data-page="workouts"><b>▤</b><span data-i18n="workouts">Workout Plans</span></a>
+      <a class="nav-link" href="#diet" data-page="diet"><b>◉</b><span data-i18n="diet">Diet Plans</span></a>
+      <a class="nav-link" href="#progress" data-page="progress"><b>↗</b><span data-i18n="progress">Progress</span></a>
+      <a class="nav-link" href="#trainers" data-page="trainers"><b>♟</b><span data-i18n="trainers">Trainers</span></a>
+    </nav>
+    <div class="sidebar-bottom"><div class="help-card"><span class="help-symbol">✦</span><strong data-i18n="keepGoing">Keep showing up.</strong><p data-i18n="smallSteps">Small steps. Strong results.</p></div><span class="version">FITCORE DEMO · v1.0</span></div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuToggle" aria-label="Menu">☰</button>
+      <div><div class="top-eyebrow" data-i18n="management">GYM MANAGEMENT</div><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><span class="today" id="todayLabel"></span><button class="language-toggle" id="languageToggle">தமிழ்</button><div class="avatar">FC</div></div>
+    </header>
+
+    <section class="page active" id="page-dashboard">
+      <div class="welcome-banner"><div><span class="banner-tag" data-i18n="overview">YOUR FITNESS BUSINESS AT A GLANCE</span><h2 data-i18n="welcome">Build a stronger<br><em>gym community.</em></h2><p data-i18n="welcomeSub">Manage your members, plans and daily activity in one place.</p></div><div class="banner-art">FIT<span>+</span></div></div>
+      <div class="section-title"><div><h2 data-i18n="todayOverview">Today's Overview</h2><p data-i18n="liveSnapshot">A quick snapshot of your gym</p></div><span class="date-chip" id="dateChip"></span></div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span data-i18n="totalMembers">Total Members</span><b class="stat-icon lime">♙</b></div><strong id="statMembers">0</strong><small data-i18n="registeredMembers">Registered members</small></article>
+        <article class="stat-card"><div class="stat-top"><span data-i18n="presentToday">Present Today</span><b class="stat-icon green">✓</b></div><strong id="statPresent">0</strong><small data-i18n="attendanceMarked">Attendance marked today</small></article>
+        <article class="stat-card"><div class="stat-top"><span data-i18n="activeTrainers">Active Trainers</span><b class="stat-icon blue">♟</b></div><strong id="statTrainers">3</strong><small data-i18n="coachingTeam">Your coaching team</small></article>
+        <article class="stat-card"><div class="stat-top"><span data-i18n="plansAvailable">Plans Available</span><b class="stat-icon orange">▤</b></div><strong>06</strong><small data-i18n="workoutDietPlans">Workout & diet templates</small></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel"><div class="panel-heading"><div><h3 data-i18n="recentMembers">Recent Members</h3><p data-i18n="latestJoins">Latest member registrations</p></div><a href="#members" class="inline-link" data-goto="members" data-i18n="viewAll">View all →</a></div><div class="table-wrap"><table><thead><tr><th data-i18n="member">MEMBER</th><th data-i18n="plan">PLAN</th><th data-i18n="status">STATUS</th></tr></thead><tbody id="recentMembersBody"></tbody></table></div></article>
+        <article class="panel"><div class="panel-heading"><div><h3 data-i18n="quickActions">Quick Actions</h3><p data-i18n="commonTasks">Common tasks, one tap away</p></div></div><div class="quick-actions"><button data-goto="members"><span>＋</span><div><b data-i18n="addMember">Add a member</b><small data-i18n="registerNew">Register a new member</small></div><i>→</i></button><button data-goto="attendance"><span>✓</span><div><b data-i18n="markAttendance">Mark attendance</b><small data-i18n="checkIn">Check in today's visitors</small></div><i>→</i></button><button data-goto="progress"><span>↗</span><div><b data-i18n="trackProgress">Track progress</b><small data-i18n="recordResults">Record a fitness update</small></div><i>→</i></button></div></article>
+      </div>
+      <div class="demo-note"><b data-i18n="demoMode">DEMO MODE</b><span data-i18n="demoNotice">Your entries are saved in this browser only. This demo does not use a cloud database.</span></div>
+    </section>
+
+    <section class="page" id="page-members">
+      <div class="section-title"><div><h2 data-i18n="memberManagement">Member Management</h2><p data-i18n="memberSub">Register and manage your gym members.</p></div><button class="primary-btn" id="showMemberForm">＋ <span data-i18n="addMember">Add Member</span></button></div>
+      <form class="panel form-panel hidden" id="memberForm">
+        <div class="panel-heading"><div><h3 data-i18n="newMember">New Member</h3><p data-i18n="enterDetails">Enter member details below</p></div><button type="button" class="close-btn" id="closeMemberForm">×</button></div>
+        <div class="form-grid"><label><span data-i18n="fullName">Full name</span><input name="name" required placeholder="Member name"></label><label><span data-i18n="phone">Phone number</span><input name="phone" required inputmode="tel" placeholder="98765 43210"></label><label><span data-i18n="membershipPlan">Membership plan</span><select name="plan"><option>Monthly</option><option>Quarterly</option><option>Annual</option></select></label><label><span data-i18n="startDate">Start date</span><input name="start" type="date" required></label></div>
+        <button class="primary-btn" type="submit" data-i18n="saveMember">Save Member</button>
+      </form>
+      <article class="panel"><div class="panel-heading"><div><h3 data-i18n="allMembers">All Members</h3><p data-i18n="memberDirectory">Your member directory</p></div><input class="search-input" id="memberSearch" placeholder="Search members…"></div><div class="table-wrap"><table><thead><tr><th data-i18n="member">MEMBER</th><th data-i18n="phone">PHONE</th><th data-i18n="plan">PLAN</th><th data-i18n="joined">JOINED</th><th data-i18n="status">STATUS</th><th data-i18n="action">ACTION</th></tr></thead><tbody id="membersBody"></tbody></table></div></article>
+    </section>
+
+    <section class="page" id="page-attendance">
+      <div class="section-title"><div><h2 data-i18n="attendanceTitle">Attendance Register</h2><p data-i18n="attendanceSub">Record daily check-ins for your members.</p></div><span class="date-chip" id="attendanceDate"></span></div>
+      <article class="panel"><div class="panel-heading"><div><h3 data-i18n="checkInMembers">Member Check-in</h3><p data-i18n="tapPresent">Tap the button when a member arrives.</p></div><span class="count-pill" id="presentCount">0 PRESENT</span></div><div class="table-wrap"><table><thead><tr><th data-i18n="member">MEMBER</th><th data-i18n="phone">PHONE</th><th data-i18n="todaysStatus">TODAY'S STATUS</th><th data-i18n="action">ACTION</th></tr></thead><tbody id="attendanceBody"></tbody></table></div></article>
+    </section>
+
+    <section class="page" id="page-workouts">
+      <div class="section-title"><div><h2 data-i18n="workoutLibrary">Workout Library</h2><p data-i18n="workoutSub">Simple training templates for different goals.</p></div></div>
+      <div class="program-grid">
+        <article class="program-card"><div class="program-visual strength">01</div><div class="program-content"><span class="tag">STRENGTH</span><h3 data-i18n="muscleBuild">Muscle Building</h3><p data-i18n="muscleDesc">Progressive resistance training with compound movements and recovery days.</p><ul><li>4–5 days / week</li><li>45–60 min / session</li><li data-i18n="beginnerAdv">Beginner to advanced</li></ul></div></article>
+        <article class="program-card"><div class="program-visual cardio">02</div><div class="program-content"><span class="tag">CONDITIONING</span><h3 data-i18n="fatLoss">Fat Loss & Cardio</h3><p data-i18n="fatDesc">A balanced mix of cardio, strength and sustainable activity.</p><ul><li>3–5 days / week</li><li>30–45 min / session</li><li data-i18n="allLevels">All fitness levels</li></ul></div></article>
+        <article class="program-card"><div class="program-visual mobility">03</div><div class="program-content"><span class="tag">FOUNDATION</span><h3 data-i18n="mobility">Mobility & Flexibility</h3><p data-i18n="mobilityDesc">Build movement quality, flexibility and better training habits.</p><ul><li>2–4 days / week</li><li>20–30 min / session</li><li data-i18n="allLevels">All fitness levels</li></ul></div></article>
+      </div>
+      <div class="demo-note"><b data-i18n="coachNote">COACH NOTE</b><span data-i18n="workoutDisclaimer">Adapt every workout to the member's ability, health history and goals. Demonstrate correct technique and encourage safe progression.</span></div>
+    </section>
+
+    <section class="page" id="page-diet">
+      <div class="section-title"><div><h2 data-i18n="nutritionGuides">Nutrition Guides</h2><p data-i18n="dietSub">Basic food-habit templates to discuss with members.</p></div></div>
+      <div class="diet-grid"><article class="panel diet-card"><span class="diet-icon">◒</span><span class="tag">GOAL 01</span><h3 data-i18n="balancedEating">Balanced Eating</h3><p data-i18n="balancedDesc">Build meals around vegetables, fruit, protein sources, whole grains and healthy fats.</p><div class="diet-tip" data-i18n="balancedTip">Tip: Encourage regular meals and water through the day.</div></article><article class="panel diet-card"><span class="diet-icon">⚡</span><span class="tag">GOAL 02</span><h3 data-i18n="trainingFuel">Training Fuel</h3><p data-i18n="fuelDesc">Plan suitable meals and snacks around training, recovery and each person's routine.</p><div class="diet-tip" data-i18n="fuelTip">Tip: Include protein-rich foods across the day.</div></article><article class="panel diet-card"><span class="diet-icon">🌿</span><span class="tag">GOAL 03</span><h3 data-i18n="healthyHabits">Healthy Habits</h3><p data-i18n="habitsDesc">Focus on consistency, sleep, hydration and realistic long-term food choices.</p><div class="diet-tip" data-i18n="habitsTip">Tip: Small repeatable changes are easier to maintain.</div></article></div>
+      <div class="demo-note"><b data-i18n="nutritionSafety">IMPORTANT</b><span data-i18n="nutritionDisclaimer">These are general education examples, not personalised medical diets. Refer members with medical conditions or special dietary needs to a qualified dietitian or clinician.</span></div>
+    </section>
+
+    <section class="page" id="page-progress">
+      <div class="section-title"><div><h2 data-i18n="progressTracking">Progress Tracking</h2><p data-i18n="progressSub">Save a member's fitness measurements over time.</p></div></div>
+      <form class="panel form-panel" id="progressForm"><div class="panel-heading"><div><h3 data-i18n="addProgress">Add Progress Record</h3><p data-i18n="recordMeasurement">Record a dated measurement</p></div></div><div class="form-grid"><label><span data-i18n="selectMember">Select member</span><select name="member" id="progressMember" required></select></label><label><span data-i18n="recordDate">Date</span><input name="date" type="date" required></label><label><span data-i18n="weightKg">Weight (kg)</span><input name="weight" type="number" min="1" max="500" step="0.1" placeholder="70.5" required></label><label><span data-i18n="notes">Notes</span><input name="notes" placeholder="Energy, strength, measurements…"></label></div><button class="primary-btn" type="submit" data-i18n="saveProgress">Save Progress</button></form>
+      <article class="panel"><div class="panel-heading"><div><h3 data-i18n="progressHistory">Progress History</h3><p data-i18n="latestMeasurements">Latest saved measurements</p></div></div><div class="table-wrap"><table><thead><tr><th data-i18n="member">MEMBER</th><th data-i18n="date">DATE</th><th data-i18n="weightKg">WEIGHT (KG)</th><th data-i18n="notes">NOTES</th></tr></thead><tbody id="progressBody"></tbody></table></div></article>
+    </section>
+
+    <section class="page" id="page-trainers">
+      <div class="section-title"><div><h2 data-i18n="trainerTeam">Trainer Team</h2><p data-i18n="trainerSub">Sample coaching team — customise these profiles.</p></div></div>
+      <div class="trainer-grid"><article class="panel trainer-card"><div class="trainer-avatar">AK</div><div><span class="tag">STRENGTH COACH</span><h3>Arun Kumar</h3><p data-i18n="strengthCoach">Strength & conditioning</p></div><span class="trainer-status">● <span data-i18n="active">ACTIVE</span></span></article><article class="panel trainer-card"><div class="trainer-avatar violet">MP</div><div><span class="tag">FITNESS COACH</span><h3>Meena P</h3><p data-i18n="fitnessCoach">General fitness & mobility</p></div><span class="trainer-status">● <span data-i18n="active">ACTIVE</span></span></article><article class="panel trainer-card"><div class="trainer-avatar blue">RJ</div><div><span class="tag">PERSONAL TRAINER</span><h3>Rajesh J</h3><p data-i18n="personalCoach">Personal training</p></div><span class="trainer-status">● <span data-i18n="active">ACTIVE</span></span></article></div>
+      <div class="demo-note"><b data-i18n="sampleProfiles">SAMPLE PROFILES</b><span data-i18n="trainerDisclaimer">Replace sample names and specialities with your real trainer details.</span></div>
+    </section>
+    <footer class="footer"><span>FITCORE © <span id="year"></span></span><span data-i18n="footerText">Train smart. Stay consistent. Get stronger.</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
